@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://cohuy6jfyif47"]
+
+[ext_resource type="Texture2D" uid="uid://b8gfn6020hdk6" path="res://icon.png" id="1_6ne0h"]
+[ext_resource type="Script" path="res://Scenes/PlayerUI/player_panel.gd" id="1_ixsob"]
+
+[node name="PlayerPanel" type="AspectRatioContainer"]
+custom_minimum_size = Vector2(128, 32)
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.1125
+offset_bottom = -4.0
+size_flags_horizontal = 3
+ratio = 4.0
+alignment_horizontal = 0
+alignment_vertical = 0
+script = ExtResource("1_ixsob")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AspectRatioContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/AspectRatioContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_6ne0h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="PlayerName" type="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+text = "Name"

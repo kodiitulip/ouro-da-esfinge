@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn46n7hml52fb"]
+
+[ext_resource type="Texture2D" uid="uid://d3gls5axlaa1w" path="res://Assets/Characters/char.png" id="1_we3xw"]
+[ext_resource type="Script" path="res://Scenes/Characters/char.gd" id="2_v3e8t"]
+
+[node name="Char" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("1_we3xw")
+offset = Vector2(0, -12)
+script = ExtResource("2_v3e8t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

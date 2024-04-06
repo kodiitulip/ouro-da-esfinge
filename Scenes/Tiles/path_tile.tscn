@@ -10,3 +10,19 @@ region = Rect2(128, 32, 64, 32)
 [node name="PathTile" type="Sprite2D"]
 texture = SubResource("AtlasTexture_6sxx1")
 script = ExtResource("2_xi1l1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(20, -2.5, 0, -12, -20, -2.5, 0, 7)
+
+[node name="Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detect"]
+polygon = PackedVector2Array(-32, -32, 0, -48, 64, -16, 32, 0)
+
+[connection signal="area_entered" from="Detect" to="." method="_on_detect_area_entered"]

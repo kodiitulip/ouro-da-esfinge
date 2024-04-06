@@ -11,6 +11,7 @@ const tiles: Array[Vector2i] = [
 	Vector2i(0, 4),
 	Vector2i(0, 3),
 	Vector2i(1, 2),
+	Vector2i(1, 1),
 ]
 
 @onready var player_container: Node2D = $Players

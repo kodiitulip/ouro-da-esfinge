@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cl17ik4ibdyer" path="res://Assets/Boards/tile_set.png" id="1_xit5s"]
 [ext_resource type="Script" path="res://Scenes/Tiles/path_tile.gd" id="2_xi1l1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sxx1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hvbl"]
+resource_local_to_scene = true
 atlas = ExtResource("1_xit5s")
 region = Rect2(128, 32, 64, 32)
 
 [node name="PathTile" type="Sprite2D"]
-texture = SubResource("AtlasTexture_6sxx1")
+texture = SubResource("AtlasTexture_8hvbl")
 script = ExtResource("2_xi1l1")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -16,6 +17,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 polygon = PackedVector2Array(20, -2.5, 0, -12, -20, -2.5, 0, 7)
 
 [node name="Detect" type="Area2D" parent="."]
@@ -23,6 +25,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Detect"]
-polygon = PackedVector2Array(-32, -32, 0, -48, 64, -16, 32, 0)
+visible = false
+polygon = PackedVector2Array(0, -48, 64, -16, 32, 0, 0, -16, -32, 0, -64, -16)
 
 [connection signal="area_entered" from="Detect" to="." method="_on_detect_area_entered"]

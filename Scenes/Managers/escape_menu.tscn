@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj5frl83pyv60"]
+[gd_scene load_steps=3 format=3 uid="uid://bj5frl83pyv60"]
 
 [ext_resource type="Script" path="res://Scenes/Managers/escape_menu.gd" id="1_lgr6h"]
+[ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="2_lauty"]
 
 [node name="EscapeMenu" type="CanvasLayer"]
 layer = 2
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_lauty")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -21,28 +23,45 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Fullscreen")
+focus_next = NodePath("../Fullscreen")
+focus_previous = NodePath("../Quit")
 mouse_default_cursor_shape = 2
 text = "Continue"
 
-[node name="Fullscreen" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Fullscreen" type="CheckBox" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Menu")
+focus_next = NodePath("../Menu")
+focus_previous = NodePath("../Continue")
 mouse_default_cursor_shape = 2
 text = "Fullscreen"
+alignment = 1
 
 [node name="Menu" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Fullscreen")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Fullscreen")
 mouse_default_cursor_shape = 2
 text = "Menu"
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../Menu")
+focus_neighbor_bottom = NodePath("../Continue")
+focus_next = NodePath("../Continue")
+focus_previous = NodePath("../Menu")
 mouse_default_cursor_shape = 2
 text = "Quit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

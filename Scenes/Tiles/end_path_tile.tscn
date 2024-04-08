@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://1su1uq761hgu"]
+
+[ext_resource type="PackedScene" uid="uid://d4bbbygb6vqwc" path="res://Scenes/Tiles/path_tile.tscn" id="1_m4uyr"]
+[ext_resource type="Texture2D" uid="uid://cl17ik4ibdyer" path="res://Assets/Boards/tile_set.png" id="2_lfye3"]
+[ext_resource type="Script" path="res://Scenes/Tiles/end_path_tile.gd" id="3_ngcw2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdekt"]
+resource_local_to_scene = true
+atlas = ExtResource("2_lfye3")
+region = Rect2(192, 32, 64, 32)
+
+[node name="EndPathTile" instance=ExtResource("1_m4uyr")]
+texture = SubResource("AtlasTexture_sdekt")
+script = ExtResource("3_ngcw2")

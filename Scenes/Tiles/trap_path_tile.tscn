@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqyn58lm8uvmj"]
+
+[ext_resource type="PackedScene" uid="uid://d4bbbygb6vqwc" path="res://Scenes/Tiles/path_tile.tscn" id="1_ayhy0"]
+[ext_resource type="Texture2D" uid="uid://cl17ik4ibdyer" path="res://Assets/Boards/tile_set.png" id="2_p5b1p"]
+[ext_resource type="Script" path="res://Scenes/Tiles/trap_path_tile.gd" id="3_l33x5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ktb3"]
+resource_local_to_scene = true
+atlas = ExtResource("2_p5b1p")
+region = Rect2(64, 32, 64, 32)
+
+[node name="TrapPathTile" instance=ExtResource("1_ayhy0")]
+texture = SubResource("AtlasTexture_6ktb3")
+script = ExtResource("3_l33x5")

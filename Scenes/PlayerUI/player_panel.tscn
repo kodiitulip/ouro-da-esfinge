@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cohuy6jfyif47"]
+[gd_scene load_steps=6 format=3 uid="uid://cohuy6jfyif47"]
 
-[ext_resource type="Texture2D" uid="uid://b8gfn6020hdk6" path="res://icon.png" id="1_6ne0h"]
 [ext_resource type="Script" path="res://Scenes/PlayerUI/player_panel.gd" id="1_ixsob"]
+[ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_q0pxw"]
+[ext_resource type="Texture2D" uid="uid://b3fsvtysx13us" path="res://Assets/Dice/dice.png" id="3_4cudp"]
+[ext_resource type="Texture2D" uid="uid://d3gls5axlaa1w" path="res://Assets/Characters/char.png" id="3_5k28w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4bki"]
+resource_local_to_scene = true
+atlas = ExtResource("3_4cudp")
+region = Rect2(160, 0, 32, 32)
 
 [node name="PlayerPanel" type="AspectRatioContainer"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 64)
 anchors_preset = -1
-anchor_right = 0.2
-anchor_bottom = 0.1125
-offset_bottom = -4.0
+anchor_right = 0.3
+anchor_bottom = 0.177778
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-ratio = 4.0
+theme = ExtResource("1_q0pxw")
+ratio = 3.0
 alignment_horizontal = 0
 alignment_vertical = 0
 script = ExtResource("1_ixsob")
@@ -20,44 +29,82 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/AspectRatioContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/AspectRatioContainer/PanelContainer"]
-layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/AspectRatioContainer/PanelContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("1_6ne0h")
+texture = ExtResource("3_5k28w")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 6
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer3/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="PlayerName" type="RichTextLabel" parent="HBoxContainer/PanelContainer/MarginContainer"]
+[node name="PlayerInfo" type="RichTextLabel" parent="HBoxContainer/MarginContainer3/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/normal_font_size = 10
 text = "Name"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Dice" type="TextureRect" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_b4bki")
+expand_mode = 1
+stretch_mode = 5

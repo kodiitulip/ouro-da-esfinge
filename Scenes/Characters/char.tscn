@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://d3gls5axlaa1w" path="res://Assets/Characters/char.png" id="1_we3xw"]
 [ext_resource type="Script" path="res://Scenes/Characters/char.gd" id="2_v3e8t"]
-[ext_resource type="Script" path="res://Scenes/Camera/dynamic_camera.gd" id="3_kfrr8"]
 
 [sub_resource type="Animation" id="Animation_ao64r"]
 length = 0.001
@@ -29,6 +28,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bok8m"]
@@ -86,9 +97,52 @@ tracks/1/keys = {
 "values": [0.0, 0.0872665, -0.0872665]
 }
 
+[sub_resource type="Animation" id="Animation_dehrd"]
+resource_name = "ascend"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_ascend"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjnv7"]
 _data = {
 "RESET": SubResource("Animation_ao64r"),
+"ascend": SubResource("Animation_dehrd"),
 "fail_move": SubResource("Animation_bok8m"),
 "move": SubResource("Animation_tmnpe")
 }
@@ -100,10 +154,6 @@ position = Vector2(0, -4)
 texture = ExtResource("1_we3xw")
 offset = Vector2(0, -12)
 script = ExtResource("2_v3e8t")
-
-[node name="DynamicCamera2D" type="Camera2D" parent="."]
-enabled = false
-script = ExtResource("3_kfrr8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfo1me3nnyifo"]
+
+[ext_resource type="PackedScene" uid="uid://d4bbbygb6vqwc" path="res://Scenes/Tiles/path_tile.tscn" id="1_8ml7o"]
+[ext_resource type="Script" path="res://Scenes/Tiles/sphix_path_tile.gd" id="2_8g1os"]
+[ext_resource type="Texture2D" uid="uid://cl17ik4ibdyer" path="res://Assets/Boards/tile_set.png" id="2_iolcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxmxc"]
+resource_local_to_scene = true
+atlas = ExtResource("2_iolcs")
+region = Rect2(192, 32, 64, 32)
+
+[node name="SphixPathTile" instance=ExtResource("1_8ml7o")]
+texture = SubResource("AtlasTexture_bxmxc")
+script = ExtResource("2_8g1os")

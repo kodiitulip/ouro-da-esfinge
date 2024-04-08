@@ -3,6 +3,7 @@ class_name EscapeMenu
 
 @onready var center_container: CenterContainer = $CenterContainer
 @onready var continue_button: Button = %Continue
+@onready var fullscreen: CheckBox = %Fullscreen
 @onready var menu_button: Button = %Menu
 @onready var quit_button: Button = %Quit
 
@@ -14,13 +15,6 @@ var active: bool = false:
 		active = value
 		center_container.visible = active
 		fade_ui()
-var fullscreen: bool = true:
-	set(b):
-		DisplayServer.window_set_mode(
-			DisplayServer.WINDOW_MODE_FULLSCREEN if b 
-			else DisplayServer.WINDOW_MODE_WINDOWED
-		)
-		fullscreen = b
 		
 
 
@@ -32,6 +26,8 @@ func fade_ui() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
 		active = !active
+	if event.is_action_pressed("fullscreen"):
+		fullscreen.button_pressed = true
 
 
 func _on_continue_pressed() -> void:
@@ -47,5 +43,8 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_fullscreen_pressed() -> void:
-	fullscreen = !fullscreen
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://davkj3ackyb1y"]
-
-[ext_resource type="PackedScene" uid="uid://d4bbbygb6vqwc" path="res://Scenes/Tiles/path_tile.tscn" id="1_ln84d"]
-
-[node name="PathTile" instance=ExtResource("1_ln84d")]
-
-[node name="CollisionPolygon2D" parent="Detect" index="0"]
-polygon = PackedVector2Array(32, -32, 0, -48, -64, -16, -32, 0)

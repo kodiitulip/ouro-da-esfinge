@@ -1,17 +1,20 @@
 extends Sprite2D
-class_name PlayerCharacter
+class_name Character
 
-signal rolled(player: PlayerCharacter,roll: int)
+signal rolled(character: Character, roll: int)
 signal finished_moving()
-signal turn_ended()
+signal turn_ended(character: Character)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var player_data: PlayerData
+var self_color: Color = Color(1,1,1)
+var character_data: CharacterData
 var current_tile: PathTile:
 	set = connect_to_tile
 var goto: Vector2 = Vector2.ZERO:
 	set = _move
+var active_turn: bool = false:
+	set = _set_active_turn
 var moving: bool = false
 
 
@@ -41,23 +44,34 @@ func connect_to_tile(tile: PathTile) -> void:
 	current_tile = tile
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("roll_dice") and not moving:
-		moving = true
-		rolled.emit(self, roll())
-
-
-func roll() -> int:
-	var r = randi_range(1, 4)
-	print(r)
-	return r
-
-
 func emit_rolled(new_roll: int) -> void:
+	if !active_turn:
+		return
 	rolled.emit(self, new_roll)
 
 
-func fail_move() -> void:
+func fail_move(off: Vector2 = Vector2.ZERO) -> void:
 	animation_player.play("fail_move")
+	await animation_player.animation_finished
+	rearange_in_tile(off)
 	moving = false
-	turn_ended.emit()
+	turn_ended.emit(self)
+
+
+func rearange_in_tile(off: Vector2) -> void:
+	var t = create_tween()
+	t.tween_property(self, "global_position", global_position + off, 0.15
+	).from_current()
+
+
+func _set_active_turn(v) -> void:
+	active_turn = v
+	character_data.is_turn = v
+
+
+func _ascend() -> void:
+	var board = get_tree().get_first_node_in_group("board") as BoardManager
+	character_data.finished = true
+	fail_move()
+	board.players.remove_at(board.players.find(self))
+	queue_free()

@@ -9,7 +9,6 @@ var center_pos: Vector2 = position
 func _ready() -> void:
 	position_smoothing_enabled = true
 	position_smoothing_speed = 2
-	zoom = Vector2(2, 2)
 
 
 func _process(_delta: float) -> void:

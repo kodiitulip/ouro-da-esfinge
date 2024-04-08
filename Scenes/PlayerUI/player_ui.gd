@@ -1,7 +1,8 @@
 extends CanvasLayer
 class_name PlayerUI
 
-#const player_panel: PackedScene = preload("res://Scenes/PlayerUI/player_panel.tscn")
+const sphinx_card = preload("res://Scenes/PlayerUI/Cards/sphinx_card.tscn")
+const trap_card = preload("res://Scenes/PlayerUI/Cards/trap_card.tscn")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var top_left: PlayerPanel = %TopLeft as PlayerPanel
@@ -10,23 +11,27 @@ class_name PlayerUI
 @onready var bottom_left: PlayerPanel = %BottomLeft as PlayerPanel
 
 
-@export var player_datas: Array[PlayerData] = []:
+@export var player_datas: Array[CharacterData] = []:
 	set(d):
 		if d.size() > 4:
 			d.resize(4)
 		player_datas = d
+		if d.size() == 4:
+			_place_character_datas()
 
 func _ready() -> void:
-	if player_datas.is_empty():
-		printerr('player_datas is empty!')
-		return
-	
-	top_left.player_data = player_datas[0]
-	top_right.player_data = player_datas[1]
-	bottom_left.player_data = player_datas[2]
-	bottom_right.player_data = player_datas[3]
-	
 	fade_in()
+
+
+func _place_character_datas() -> void:
+	top_left.player_data = player_datas[0]
+	player_datas[0].ui = top_left
+	top_right.player_data = player_datas[1]
+	player_datas[1].ui = top_right
+	bottom_left.player_data = player_datas[2]
+	player_datas[2].ui = bottom_left
+	bottom_right.player_data = player_datas[3]
+	player_datas[3].ui = bottom_right
 
 
 func fade_in() -> void:
@@ -35,3 +40,21 @@ func fade_in() -> void:
 
 func fade_out() -> void:
 	animation_player.play("fade")
+
+
+func show_sphinx_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> void:
+	var card = sphinx_card.instantiate() as SphinxCard
+	card.player = player
+	card.player_pos = place
+	add_child(card)
+
+
+func show_trap_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> void:
+	var card = trap_card.instantiate() as TrapCard
+	card.player = player
+	card.player_pos = place
+	add_child(card)
+
+
+func _on_roll_button_pressed() -> void:
+	Input.action_press("roll_dice")

@@ -1,0 +1,66 @@
+{
+	"sphinx": [
+		{
+			"question": "Quem, entre os sábios da mente,é conhecido por \ndesvendar os mistérios do condicionamento clássico?",
+			"answer1": "O incomparável B.F. Skinner",
+			"answer2": "O venerável Ivan Pavlov",
+			"correct": "answer2",
+		},
+		{
+			"question": "Qual é a distinção primordial entre o condicionamento clássico e o condicionamento operante?",
+			"answer1": "Na senda do condicionamento operante, a \nresposta é instintiva e automática, \nenquanto na trilha do condicionamento \nclássico é escolhida voluntariamente \npelo sujeito.",
+			"answer2": "Na esfera do condicionamento clássico, a \nreação é reflexa e sem vontade, \nenquanto no domínio do condicionamento \noperante é conscientemente decidida pelo \nindivíduo.",
+			"correct": "answer2",
+		},
+		{
+			"question": "Qual é a consequência da união entre um estímulo neutro e \num estímulo incondicionado no enigma do condicionamento clássico?",
+			"answer1": "O estímulo neutro se metamorfoseia, \ntornando-se um estímulo condicionado, \ndesencadeando uma resposta incondicionada.",
+			"answer2": "O estímulo neutro evolui, \ntransformando-se em estímulo incondicionado.",
+			"correct": "answer1",
+		},
+		{
+			"question": "Quem entre os sábios da psique é venerado por trazer\n à luz os mistérios do condicionamento operante?",
+			"answer1": "Ivan Pavlov",
+			"answer2": "B.F. Skinner",
+			"correct": "answer2",
+		},
+		{
+			"question": "Qual destes caminhos revela o condicionamento operante, ó curioso buscador?",
+			"answer1": "O rato que aciona uma \nalavanca para obter alimento.",
+			"answer2": "O estudante que se \nangustia ao ouvir certas palavras.",
+			"correct": "answer1",
+		},
+		{
+			"question": "Qual destas trilhas ilumina melhor o condicionamento operante em um jogo, \nó curioso aventureiro?",
+			"answer1": "O guerreiro que dispara \nautomaticamente contra seus adversários \nao surgirem na tela.",
+			"answer2": "O explorador que acumula \npontos de experiência ao completar \nsuas missões.",
+			"correct": "answer2",
+		},
+		{
+			"question": "Em qual destes labirintos virtuais um claro exemplo de condicionamento clássico \npode ser descoberto, ó aventureiro perspicaz?",
+			"answer1": "O herói que sempre é envolto por uma \naura de emoção positiva ao ouvir uma trilha \nsonora específica durante sua jornada.",
+			"answer2": "O fenômeno que ocorre repetidamente \nno jogo sempre que o jogador executa \numa ação específica.",
+			"correct": "answer1",
+		},
+		{
+			"question": "Qual desses artefatos digitais está mais entrelaçado ao condicionamento operante, ó audaz aventureiro?",
+			"answer1": "Os objetivos de missão que são \nalcançados ao seguir uma sequência \nespecífica de instruções.",
+			"answer2": "As cenas cinematográficas que são \ndesencadeadas automaticamente em \npontos cruciais da narrativa.",
+			"correct": "answer1",
+		},
+		{
+			"question": "Qual desses enigmas digitais ilustra com maior clareza o condicionamento operante, ó corajoso aventureiro?",
+			"answer1": "O jogador que é tomado pelo medo \nsempre que adentra uma área \nsombria do jogo.",
+			"answer2": "O jogador que aciona um botão \nespecífico para executar uma \nhabilidade especial do personagem.",
+			"correct": "answer2",
+		},
+	],
+	"traps": [
+		{
+			"question": "Qual é a distinção primordial entre o condicionamento clássico e o condicionamento operante?",
+			"answer1": "Na senda do condicionamento clássico, a \nresposta é instintiva e automática, \nenquanto na trilha do condicionamento \noperante é escolhida voluntariamente \npelo sujeito.",
+			"answer2": "Na esfera do condicionamento clássico, a \nreação é reflexa e sem vontade, \nenquanto no domínio do condicionamento \noperante é conscientemente decidida pelo \nindivíduo.",
+			"correct": "answer2",
+		},
+	]
+}

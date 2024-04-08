@@ -1,0 +1,260 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmkbflci7m003"]
+
+[ext_resource type="TileSet" uid="uid://dcwh58rs1h1k4" path="res://Assets/Boards/boards_tile_set.tres" id="1_8i6wl"]
+[ext_resource type="Texture2D" uid="uid://d3gls5axlaa1w" path="res://Assets/Characters/char.png" id="2_1hcfe"]
+
+[sub_resource type="Animation" id="Animation_8gpmh"]
+resource_name = "Jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(223.5, 139), Vector2(223.5, 135), Vector2(223.5, 139)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0938451, -0.0774488, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(207.5, 147), Vector2(183.5, 131), Vector2(167.5, 151), Vector2(207.5, 147)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:rotation")
+tracks/3/interp = 4
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0693585, 6.36725, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D3:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(231.5, 111), Vector2(231.5, 103), Vector2(231.5, 115)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D3:rotation")
+tracks/5/interp = 4
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0771991, -0.106343]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D4:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(199.5, 119), Vector2(195.5, 119)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D4:rotation")
+tracks/7/interp = 4
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0723561, 0.188403]
+}
+
+[sub_resource type="Animation" id="Animation_w87i7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(223.5, 139)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(207.5, 147)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231.5, 111)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(199.5, 119)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ki48q"]
+_data = {
+"Jump": SubResource("Animation_8gpmh"),
+"RESET": SubResource("Animation_w87i7")
+}
+
+[node name="MainMenuBackgorund" type="TileMap"]
+y_sort_enabled = true
+position = Vector2(65, 34)
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_8i6wl")
+format = 2
+layer_0/name = "terra"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(196609, 262144, 0, -1, 0, 0, 65535, 0, 2, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, 327679, 0, 1, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 1, -65536, 0, 0, 0, 0, 0, 131072, 262144, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 4, 393216, 0, 1, 458752, 0, 268435460, 524288, 0, 0, 589824, 1, 0, -65535, 0, 0, 1, 0, 2, 65537, 0, 0, 131073, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 4, 458753, 1, 0, 524289, 1, 0, 589825, 0, 1, -65534, 1, 7, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 327682, 1, 0, 393218, 1, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, -65533, 0, 0, 3, 1, 1, 65539, 1, 1, 196611, 1, 0, 262147, 1, 0, 327683, 0, 0, 393219, 0, 1, 458755, 0, 0, 524291, 0, 0, 589827, 0, 1, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 196612, 0, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0, 458756, 0, 0, 524292, 0, 0, 589828, 0, 0, 655361, 0, 0, 655360, 1, 8, -131069, 1, 0, 131076, 1, 6, -131068, 0, 1, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 524293, 0, 1, 393221, 0, 0, 262149, 0, 0, 131077, 0, 0, 5, 0, 0, 131070, 0, 1, 262142, 0, 4, 393214, 0, 0, 524286, 0, 0, 720895, 0, 1, 655358, 0, 0, -131070, 0, 4, 131075, 0, 0, 65538, 262144, 0, 2, 0, 0, -65537, 0, 0, -2, 0, 0, -131073, 0, 0, -131072, 0, 3, -262144, 0, 0, -196608, 0, 1, -131071, 0, 0, -196607, 0, 0, -262142, 0, 0, -196606, 0, 0, -327679, 0, 0, -262143, 0, 0, -196605, 1, 9, 720896, 0, 0, 786431, 0, 0, -262141, 0, 0, -327678, 0, 0, -393214, 0, 1, -327677, 0, 0, -262140, 0, 1, -196604, 0, 0, -131067, 0, 0, -65531, 0, 0, 65541, 0, 0, 131078, 131072, 0, 196613, 0, 0, 6, 131072, 0, 262150, 131072, 0, 327685, 0, 0, 393222, 131072, 0, 458757, 131072, 0, 589829, 0, 1, 655366, 131072, 0, 720901, 131072, 0, 720900, 0, 0, 786437, 0, 1, 786436, 196608, 0, 851972, 65536, 0, 851973, 131072, 0, 720899, 0, 0, 786435, 0, 0, 851971, 131072, 0, 851970, 0, 0, 917507, 131072, 0, 917506, 65536, 0, 786434, 0, 1, 851969, 196608, 0, 720898, 0, 0, 720897, 0, 1, 786433, 0, 0, 851968, 0, 0, 786432, 0, 0, 917505, 131072, 0, 917504, 196608, 0, 917503, 0, 0, 983039, 65536, 0, 851967, 0, 1, 917502, 65536, 0, 786430, 0, 0, 851966, 65536, 0, 720894, 0, 0, 786429, 65536, 0, 589822, 0, 0, 655357, 65536, 0, 458750, 0, 1, 524285, 65536, 0, 327678, 0, 0, 393213, 65536, 0, 196606, 0, 0, 262141, 65536, 0, 65534, 0, 0, 131069, 65536, 0, 65536, 0, 0)
+layer_1/name = "decor"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(393218, 65536, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.286275, 0.937255, 0.243137, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(223.5, 139)
+texture = ExtResource("2_1hcfe")
+offset = Vector2(0, -12)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.286275, 0.780392, 0.917647, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(207.5, 147)
+texture = ExtResource("2_1hcfe")
+offset = Vector2(0, -12)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+self_modulate = Color(0.941176, 0.313726, 0.313726, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(231.5, 111)
+texture = ExtResource("2_1hcfe")
+offset = Vector2(0, -12)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+self_modulate = Color(0.972549, 0.94902, 0.219608, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(199.5, 119)
+texture = ExtResource("2_1hcfe")
+offset = Vector2(0, -12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ki48q")
+}
+autoplay = "Jump"

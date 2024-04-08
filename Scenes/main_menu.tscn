@@ -1,33 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00qrskt3ya5r"]
+[gd_scene load_steps=7 format=3 uid="uid://d00qrskt3ya5r"]
 
+[ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_6b215"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_c3eem"]
-[ext_resource type="TileSet" uid="uid://dcwh58rs1h1k4" path="res://Assets/Boards/boards_tile_set.tres" id="1_qgybf"]
+[ext_resource type="PackedScene" uid="uid://bmkbflci7m003" path="res://Scenes/main_menu_backgorund.tscn" id="3_tpq3t"]
 
 [sub_resource type="Animation" id="Animation_cyfo2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayContainer:scale")
+tracks/0/path = NodePath("PlayContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayContainer:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(128, 64)]
+"values": [Vector2(128, 72)]
 }
 
 [sub_resource type="Animation" id="Animation_6d4e7"]
@@ -36,38 +25,26 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayContainer:scale")
-tracks/0/interp = 1
+tracks/0/path = NodePath("PlayContainer:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(2, 0.5),
 "update": 0,
-"values": [Vector2(0, 1), Vector2(1, 1)]
+"values": [Vector2(-320, 72), Vector2(128, 72)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayContainer:position")
-tracks/1/interp = 1
+tracks/1/path = NodePath("PlayContainer:visible")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
-"transitions": PackedFloat32Array(2.2974, 2.14355),
-"update": 0,
-"values": [Vector2(16, 64), Vector2(128, 64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayContainer:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true, true]
+"values": [false, false, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7mpp"]
@@ -83,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6b215")
 script = ExtResource("1_c3eem")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -92,6 +70,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -101,18 +80,7 @@ size = Vector2i(640, 360)
 render_target_clear_mode = 2
 render_target_update_mode = 4
 
-[node name="TileMap" type="TileMap" parent="SubViewportContainer/SubViewport"]
-y_sort_enabled = true
-position = Vector2(65, 34)
-scale = Vector2(2, 2)
-tile_set = ExtResource("1_qgybf")
-format = 2
-layer_0/name = "terra"
-layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(196609, 262144, 0, -1, 0, 0, 65535, 0, 2, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, 327679, 0, 1, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 1, -65536, 0, 0, 0, 0, 1, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 4, 393216, 0, 1, 458752, 0, 268435460, 524288, 0, 0, 589824, 1, 0, -65535, 0, 0, 1, 0, 2, 65537, 0, 0, 131073, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 4, 458753, 1, 0, 524289, 1, 0, 589825, 0, 1, -65534, 1, 7, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 327682, 1, 0, 393218, 1, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, -65533, 0, 0, 3, 1, 1, 65539, 1, 1, 196611, 1, 0, 262147, 1, 0, 327683, 0, 0, 393219, 0, 1, 458755, 0, 0, 524291, 0, 0, 589827, 0, 1, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 196612, 0, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0, 458756, 0, 2, 524292, 0, 0, 589828, 0, 0, 655361, 196608, 0, 655360, 1, 8, -131069, 1, 0, 131076, 1, 6, -131068, 0, 1, 655362, 196608, 0, 655363, 196608, 0, 655364, 196608, 0, 655365, 131072, 0, 524293, 131072, 0, 393221, 131072, 0, 262149, 131072, 0, 131077, 131072, 0, 5, 131072, 0, 131070, 65536, 0, 262142, 65536, 0, 393214, 65536, 0, 524286, 65536, 0, 720895, 65536, 0, 655358, 65536, 0, -131070, 0, 4, 131075, 0, 0, 65538, 0, 1, 2, 0, 0, -65537, 0, 0, -2, 65536, 0, -131073, 0, 0, -131072, 0, 3, -262144, 0, 0, -196608, 0, 1, -131071, 0, 0, -196607, 0, 0, -262142, 0, 0, -196606, 131072, 0, -327679, 0, 0, -262143, 0, 0, -196605, 1, 9, 720896, 131072, 0, 786431, 65536, 0)
-layer_1/name = "decor"
-layer_1/y_sort_enabled = true
-layer_1/tile_data = PackedInt32Array(393218, 65536, 3)
+[node name="MainMenuBackgorund" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_tpq3t")]
 
 [node name="Buttons" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -150,10 +118,10 @@ focus_previous = NodePath("../Play")
 disabled = true
 text = "Join"
 
-[node name="Fullscreen" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
+[node name="Fullscreen" type="CheckBox" parent="Buttons/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
-disabled = true
 text = "Fullscreen"
 
 [node name="Control" type="Control" parent="Buttons/MarginContainer/VBoxContainer"]
@@ -180,10 +148,9 @@ anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.325
-offset_left = -112.0
-offset_right = -112.0
-scale = Vector2(1e-05, 1)
-metadata/_edit_use_anchors_ = true
+offset_left = -448.0
+offset_right = -448.0
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayContainer"]
 layout_mode = 2
@@ -222,6 +189,6 @@ libraries = {
 }
 
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="toggled" from="Buttons/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PlayContainer/MarginContainer/HBoxContainer/Singleplayer" to="." method="_on_singleplayer_pressed"]

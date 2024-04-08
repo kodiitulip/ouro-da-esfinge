@@ -57,4 +57,8 @@ func show_trap_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> v
 
 
 func _on_roll_button_pressed() -> void:
-	Input.action_press("roll_dice")
+	var p = InputEventAction.new()
+	p.action = "roll_dice"
+	p.pressed = true
+	p.strength = 1
+	Input.parse_input_event(p)

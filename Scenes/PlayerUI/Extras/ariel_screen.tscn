@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyuw8fgs6do03"]
 
-[ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="1_2cd7u"]
-[ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_dvl7h"]
+[ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_mcxs0"]
+[ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="2_lp88w"]
 
-[node name="EndScreen" type="Control"]
+[node name="Ariel\'sScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_dvl7h")
+theme = ExtResource("1_mcxs0")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 0
@@ -22,7 +22,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("1_2cd7u")
+texture = ExtResource("2_lp88w")
 patch_margin_left = 64
 patch_margin_top = 32
 patch_margin_right = 64

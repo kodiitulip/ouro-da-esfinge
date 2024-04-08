@@ -70,8 +70,6 @@ func _set_active_turn(v) -> void:
 
 
 func _ascend() -> void:
-	var board = get_tree().get_first_node_in_group("board") as BoardManager
 	character_data.finished = true
-	fail_move()
-	board.players.remove_at(board.players.find(self))
-	queue_free()
+	moving = false
+	turn_ended.emit(self)

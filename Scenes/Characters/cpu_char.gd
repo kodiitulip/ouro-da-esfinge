@@ -24,7 +24,7 @@ func rand_get_right_answer() -> bool:
 	var r = randf()
 	timer.start()
 	await timer.timeout
-	if r < 0.4:
+	if r < 0.6:
 		return true
 	else:
 		return false

@@ -187,6 +187,7 @@ layer = 3
 script = ExtResource("1_hvkb1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -216,6 +217,7 @@ stretch_mode = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
+texture_filter = 2
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = 0.875

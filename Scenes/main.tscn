@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://boyf0u4jrg7gp"]
+[gd_scene load_steps=5 format=3 uid="uid://boyf0u4jrg7gp"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_dpi3p"]
+[ext_resource type="AudioStream" uid="uid://bysrmuvspbtkq" path="res://Assets/Music/Tema_Musical_Misterio.mp3" id="2_dub0t"]
+
+[sub_resource type="Animation" id="Animation_ycyjt"]
+resource_name = "loop_song"
+length = 120.0
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgrondMusic")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_dub0t")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypnv6"]
+_data = {
+"loop_song": SubResource("Animation_ycyjt")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dpi3p")
@@ -15,3 +41,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.905882, 0.792157, 0.607843, 1)
+
+[node name="BackgrondMusic" type="AudioStreamPlayer2D" parent="."]
+volume_db = 0.8
+max_distance = 10000.0
+bus = &"BackgroundMusic"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ypnv6")
+}
+autoplay = "loop_song"

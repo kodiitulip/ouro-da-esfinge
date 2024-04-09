@@ -9,6 +9,7 @@ const trap_card = preload("res://Scenes/PlayerUI/Cards/trap_card.tscn")
 @onready var top_right: PlayerPanel = %TopRight as PlayerPanel
 @onready var bottom_right: PlayerPanel = %BottomRight as PlayerPanel
 @onready var bottom_left: PlayerPanel = %BottomLeft as PlayerPanel
+@onready var ariel_screen: ArielScreen = $"ArielScreen" as ArielScreen
 
 
 @export var player_datas: Array[CharacterData] = []:
@@ -18,9 +19,6 @@ const trap_card = preload("res://Scenes/PlayerUI/Cards/trap_card.tscn")
 		player_datas = d
 		if d.size() == 4:
 			_place_character_datas()
-
-func _ready() -> void:
-	fade_in()
 
 
 func _place_character_datas() -> void:
@@ -44,6 +42,7 @@ func fade_out() -> void:
 
 func show_sphinx_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> void:
 	var card = sphinx_card.instantiate() as SphinxCard
+	card.ui = self
 	card.player = player
 	card.player_pos = place
 	add_child(card)
@@ -51,6 +50,7 @@ func show_sphinx_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) ->
 
 func show_trap_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> void:
 	var card = trap_card.instantiate() as TrapCard
+	card.ui = self
 	card.player = player
 	card.player_pos = place
 	add_child(card)
@@ -59,6 +59,14 @@ func show_trap_card(player: PlayerCharacter, place: Vector2 = Vector2.ZERO) -> v
 func _on_roll_button_pressed() -> void:
 	var p = InputEventAction.new()
 	p.action = "roll_dice"
+	p.pressed = true
+	p.strength = 1
+	Input.parse_input_event(p)
+
+
+func _on_esc_button_pressed() -> void:
+	var p = InputEventAction.new()
+	p.action = "escape"
 	p.pressed = true
 	p.strength = 1
 	Input.parse_input_event(p)

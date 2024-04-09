@@ -4,63 +4,273 @@
 			"question": "Quem, entre os sábios da mente,é conhecido por \ndesvendar os mistérios do condicionamento clássico?",
 			"answer1": "O incomparável B.F. Skinner",
 			"answer2": "O venerável Ivan Pavlov",
-			"correct": "answer2",
+			"correct": "answer2"
 		},
 		{
 			"question": "Qual é a distinção primordial entre o condicionamento clássico e o condicionamento operante?",
 			"answer1": "Na senda do condicionamento operante, a \nresposta é instintiva e automática, \nenquanto na trilha do condicionamento \nclássico é escolhida voluntariamente \npelo sujeito.",
 			"answer2": "Na esfera do condicionamento clássico, a \nreação é reflexa e sem vontade, \nenquanto no domínio do condicionamento \noperante é conscientemente decidida pelo \nindivíduo.",
-			"correct": "answer2",
+			"correct": "answer2"
 		},
 		{
 			"question": "Qual é a consequência da união entre um estímulo neutro e \num estímulo incondicionado no enigma do condicionamento clássico?",
 			"answer1": "O estímulo neutro se metamorfoseia, \ntornando-se um estímulo condicionado, \ndesencadeando uma resposta incondicionada.",
 			"answer2": "O estímulo neutro evolui, \ntransformando-se em estímulo incondicionado.",
-			"correct": "answer1",
+			"correct": "answer1"
 		},
 		{
 			"question": "Quem entre os sábios da psique é venerado por trazer\n à luz os mistérios do condicionamento operante?",
 			"answer1": "Ivan Pavlov",
 			"answer2": "B.F. Skinner",
-			"correct": "answer2",
+			"correct": "answer2"
 		},
 		{
 			"question": "Qual destes caminhos revela o condicionamento operante, ó curioso buscador?",
 			"answer1": "O rato que aciona uma \nalavanca para obter alimento.",
 			"answer2": "O estudante que se \nangustia ao ouvir certas palavras.",
-			"correct": "answer1",
+			"correct": "answer1"
 		},
 		{
 			"question": "Qual destas trilhas ilumina melhor o condicionamento operante em um jogo, \nó curioso aventureiro?",
 			"answer1": "O guerreiro que dispara \nautomaticamente contra seus adversários \nao surgirem na tela.",
 			"answer2": "O explorador que acumula \npontos de experiência ao completar \nsuas missões.",
-			"correct": "answer2",
+			"correct": "answer2"
 		},
 		{
 			"question": "Em qual destes labirintos virtuais um claro exemplo de condicionamento clássico \npode ser descoberto, ó aventureiro perspicaz?",
 			"answer1": "O herói que sempre é envolto por uma \naura de emoção positiva ao ouvir uma trilha \nsonora específica durante sua jornada.",
 			"answer2": "O fenômeno que ocorre repetidamente \nno jogo sempre que o jogador executa \numa ação específica.",
-			"correct": "answer1",
+			"correct": "answer1"
 		},
 		{
 			"question": "Qual desses artefatos digitais está mais entrelaçado ao condicionamento operante, ó audaz aventureiro?",
 			"answer1": "Os objetivos de missão que são \nalcançados ao seguir uma sequência \nespecífica de instruções.",
 			"answer2": "As cenas cinematográficas que são \ndesencadeadas automaticamente em \npontos cruciais da narrativa.",
-			"correct": "answer1",
+			"correct": "answer1"
 		},
 		{
 			"question": "Qual desses enigmas digitais ilustra com maior clareza o condicionamento operante, ó corajoso aventureiro?",
 			"answer1": "O jogador que é tomado pelo medo \nsempre que adentra uma área \nsombria do jogo.",
 			"answer2": "O jogador que aciona um botão \nespecífico para executar uma \nhabilidade especial do personagem.",
-			"correct": "answer2",
+			"correct": "answer2"
 		},
+		{
+			"question": "Ah, viajante da mente humana, decifra-me este enigma: Qual é o tipo de condicionamento presente quando um jovem, ao vislumbrar um prato de comida que outrora o afligiu com uma intoxicação, sente-se tomado pelo repúdio?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer2"
+		},
+		{
+			"question": "Ó buscador do conhecimento, desvende-me este enigma: Qual é o tipo de condicionamento revelado quando um jovem, em dias banhados pelo sol, encontra-se em um estado de tranquilidade e alegria?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer2"
+		},
+		{
+			"question": "Oh, desafiante da mente inquisitiva, desvenda-me este enigma: Qual é o tipo de condicionamento implicado quando um jovem, ao assistir a um programa de suspense que outrora compartilhava com seus pais em momentos de tensão, é tomado por ansiedade e inquietação?",
+			"answer2": "Condicionamento Operante",
+			"answer1": "Condicionamento Clássico",
+			"correct": "answer1"
+		},
+		{
+			"question": "Ó intrigante da mente curiosa, decifra-me este enigma: Qual é o tipo de condicionamento presente quando um jovem, ao receber um toque suave e afetuoso, encontra conforto e segurança, independentemente de sua origem não ser sua avó?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer2"
+		},
+		{
+			"question": "Ó explorador dos caminhos do conhecimento, desvenda-me este enigma: Qual é o tipo de condicionamento ilustrado quando um jovem se empenha diligentemente nos estudos para uma prova escolar e é agraciado com uma nota louvável como recompensa?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer1"
+		},
+		{
+			"question": "Ó desbravador das interações virtuais, desvende-me este enigma: Qual é o tipo de condicionamento em jogo quando um jovem recebe uma profusão de curtidas em uma postagem e, consequentemente, prossegue compartilhando conteúdo semelhante em busca de mais interações positivas?",
+			"answer2": "Condicionamento Operante",
+			"answer1": "Condicionamento Clássico",
+			"correct": "answer2"
+		},
+		{
+			"question": "Ó explorador das dinâmicas humanas, decifra-me este enigma: Qual é o tipo de condicionamento associado quando um jovem recebe elogios de um professor ou treinador por seu desempenho em uma atividade extracurricular e persiste engajado nessa atividade com vigor renovado?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer1"
+		},
+		{
+			"question": "Oh, explorador dos segredos ocultos, decifra este enigma para testar tua compreensão das antigas verdades:\n\nSe um jogador perde seu próximo turno após cair em uma armadilha, qual tipo de consequência esse evento exemplifica?",
+			"answer1": "Punição Negativa",
+			"answer2": "Reforço Positivo",
+			"correct": "answer1"
+		},
+		{
+			"question": "Oh, aprendiz dos mistérios antigos, desvenda este enigma para sondar teu conhecimento:\n\nO que acontece quando um jogador desativa uma armadilha e pode avançar uma casa?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer1"
+		},
+		{
+			"question": "Oh, guardião dos segredos perdidos, decifra este enigma para aprimorar tua sabedoria:\n\nSe um jogador evita cair em armadilhas após aprender com as consequências negativas, isso ilustra qual princípio de condicionamento?",
+			"answer1": "Reforço Negativo",
+			"answer2": "Punição Positiva",
+			"correct": "answer1"
+		},
+		{
+			"question": "Oh, viajante das eras passadas, desvenda este enigma para aprofundar teu entendimento:\n\nQuando um jogador recebe uma recompensa por responder corretamente a uma pergunta da Esfinge, isso se relaciona com qual conceito de condicionamento?",
+			"answer1": "Punição Negativa",
+			"answer2": "Reforço Positivo",
+			"correct": "answer2"
+		},
+		{
+			"question": "Oh, conhecedor das antigas tradições, decifra este enigma para avaliar tua compreensão:\n\nQuando um jogador recebe uma recompensa por evitar uma consequência negativa, isso se assemelha a qual tipo de reforço?",
+			"answer1": "Reforço Positivo",
+			"answer2": "Reforço Negativo",
+			"correct": "answer2"
+		},
+		{
+			"question": "Ó observador dos ritmos da vida, desvende-me este enigma: Qual é o tipo de condicionamento presente quando um jovem adquire uma resposta condicionada, tal como a sensação de agitação, ao ouvir o som do despertador?",
+			"answer1": "Condicionamento Operante",
+			"answer2": "Condicionamento Clássico",
+			"correct": "answer2"
+		},
+		{
+			"question": "Oh, desbravador dos laços entre som e emoção, desvenda-me este enigma: Qual é o tipo de condicionamento ilustrado quando um jovem automaticamente associa uma música específica às memórias e emoções positivas de uma época passada?",
+			"answer2": "Condicionamento Operante",
+			"answer1": "Condicionamento Clássico",
+			"correct": "answer1"
+		}
 	],
 	"traps": [
 		{
-			"question": "Qual é a distinção primordial entre o condicionamento clássico e o condicionamento operante?",
-			"answer1": "Na senda do condicionamento clássico, a \nresposta é instintiva e automática, \nenquanto na trilha do condicionamento \noperante é escolhida voluntariamente \npelo sujeito.",
-			"answer2": "Na esfera do condicionamento clássico, a \nreação é reflexa e sem vontade, \nenquanto no domínio do condicionamento \noperante é conscientemente decidida pelo \nindivíduo.",
-			"correct": "answer2",
+			"question": "Qual tipo de condicionamento está envolvido quando o jovem começa a se sentir alerta e pronto para o dia apenas ao preparar o café da manhã?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
 		},
+		{
+			"question": "Qual tipo de condicionamento está relacionado quando o som ou a vibração do celular faz com que o jovem pegue o aparelho automaticamente?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é demonstrado quando o cheiro da comida favorita faz o jovem se sentir faminto e animado para comer?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento está envolvido quando uma música específica evoca emoções intensas no jovem?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento está envolvido quando o cheiro de um livro novo ativa a sensação de empolgação e curiosidade no jovem?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "O cheiro característico da chuva faz o jovem se sentir relaxado e nostálgico.\n Qual o condicionamento demonstrado?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "O chefe está criticando um funcionário por um hábito inadequado. Que condicionamento melhor ilumina essa situação?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento está envolvido quando um jovem evita um barulho desagradável ligando a televisão para mascarar o ruído?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é melhor demonstrado quando um aluno recebe elogios do professor por responder corretamente na sala de aula?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "UMa criança está fazendo birra por ma barra de chocolate. Que condicionamento será demonstrado se o responsável por essa criança entregar a barra?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é demonstrado quando um funcionário tem esperança de receber uma promoção no trabalho devido ao seu excelente desempenho?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento é demonstrado quando um jovem vai trabalhar todos os dias para receber um salário?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento é exemplificado quando um jovem brasileiro associa automaticamente o cheiro de café pela manhã ao momento em que sua mãe prepara o café da manhã?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é exemplificado quando um jovem recebe elogios dos amigos ou da família por sua aparência física após começar a frequentar a academia e continua se exercitando?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento está envolvido quando um jovem estabelece uma meta para si mesmo, a alcança com sucesso e continua estabelecendo e perseguindo metas semelhantes no futuro?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é demonstrado quando um jovem recebe pontos ou prêmios dentro de um jogo eletrônico após atingir determinados objetivos e continua jogando para alcançar mais pontos ou prêmios?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento está relacionado quando um jovem desenvolve uma resposta emocional condicionada (ansiedade) ao ver uma rua onde costumava ser intimidado por colegas?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Qual tipo de condicionamento é demonstrado quando um jovem se sente empolgado e motivado ao ver o uniforme de seu time de futebol favorito?",
+			"answer2": "Condicionamento Clássico",
+			"answer1": "Condicionamento Operante",
+			"correct": "answer2"
+		},
+		{
+			"question": "Qual tipo de condicionamento pode ser observado quando alguém automaticamente sente ansiedade ao entrar em um elevador após ter experimentado uma pane nesse meio de transporte no passado?",
+			"answer1": "Condicionamento Clássico",
+			"answer2": "Condicionamento Operante",
+			"correct": "answer1"
+		},
+		{
+			"question": "Que tipo de reforço pode ser observado quando uma criança recebe um doce como recompensa por ter completado suas tarefas domésticas regularmente?",
+			"answer1": "Reforço Positivo",
+			"answer2": "Reforço Negativo",
+			"correct": "answer1"
+		},
+		{
+			"question": "Um estudante recebe uma nota baixa em um exame após não ter estudado adequadamente para ele. Esse evento é um reforço o uma punição?",
+			"answer1": "Reforço",
+			"answer2": "Punição",
+			"correct": "answer2"
+		},
+		{
+			"question": "Um funcionário recebe um bônus financeiro por cumprir metas de desempenho. Que tipo de reforço seria esse?",
+			"answer1": "Reforço Positivo",
+			"answer2": "Reforço Negativo",
+			"correct": "answer1"
+		}
 	]
 }

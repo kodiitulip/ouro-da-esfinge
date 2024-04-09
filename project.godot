@@ -28,9 +28,14 @@ TransitionManager="*res://Scenes/Managers/transition.tscn"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+window/vsync/vsync_mode=2
+window/stretch/aspect.android="keep_width"
+window/stretch/aspect.editor="keep_height"
+window/handheld/orientation.mobile=4
 
 [input]
 
@@ -54,3 +59,4 @@ fullscreen={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -34,3 +34,11 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_credits_pressed() -> void:
+	animation_player.play("credits")
+
+
+func _on_close_credits_pressed() -> void:
+	animation_player.play_backwards("credits")

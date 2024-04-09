@@ -8,13 +8,15 @@ const character_data = preload("res://Data/Character/character_data.gd")
 @onready var starter_path_tile: PathTile = $StarterPathTile as PathTile
 @onready var end_path_tile: EndPathTile = $EndPathTile as EndPathTile
 @onready var character_container: Node2D = $Players
-@onready var player_ui: PlayerUI = $PlayerUI
-@onready var camera: DynamicCamera2D = $DynamicCamera2D
+@onready var player_ui: PlayerUI = $PlayerUI as PlayerUI
+@onready var camera: DynamicCamera2D = $DynamicCamera2D as DynamicCamera2D
 
 var players: Array[Character] = []
 var player_datas: Array[CharacterData] = []
 
 func _ready() -> void:
+	player_ui.ariel_screen.show_starting_dialog()
+	
 	var p: Character = player_char.instantiate()
 	var p_data: CharacterData = character_data.new()
 	_setup_player(p, p_data)
@@ -38,7 +40,7 @@ func _pass_the_turn(chara: Character) -> void:
 	if chara.character_data.finished:
 		players.remove_at(players.find(chara))
 		chara.queue_free()
-		next_in_queue = wrap(next_in_queue, 0, players.size())
+		next_in_queue = wrap(next_in_queue - 1, 0, players.size())
 	if players.size() > 0:
 		players[next_in_queue].add_child(camera)
 		players[next_in_queue].active_turn = true
@@ -62,4 +64,4 @@ func _setup_player(player: Character, data: CharacterData,
 
 
 func _finish_game() -> void:
-	pass
+	player_ui.ariel_screen.show_ending_dialog()

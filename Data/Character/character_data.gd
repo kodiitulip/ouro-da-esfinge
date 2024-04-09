@@ -13,6 +13,7 @@ var points = 0:
 		emit_changed()
 var is_turn: bool = false
 var finished: bool
+var questions: int = 0
 
 
 func roll_dice(m: int = 6) -> int:

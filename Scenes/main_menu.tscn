@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d00qrskt3ya5r"]
+[gd_scene load_steps=9 format=3 uid="uid://d00qrskt3ya5r"]
 
 [ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_6b215"]
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_c3eem"]
 [ext_resource type="PackedScene" uid="uid://bmkbflci7m003" path="res://Scenes/main_menu_backgorund.tscn" id="3_tpq3t"]
+[ext_resource type="Animation" uid="uid://bwa5p0u1wm531" path="res://Assets/Themes/credits.res" id="4_dbvv5"]
+[ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="4_maqgi"]
 
 [sub_resource type="Animation" id="Animation_cyfo2"]
 length = 0.001
@@ -17,6 +19,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(128, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(0, 384)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CreditsMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_6d4e7"]
@@ -50,10 +76,12 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7mpp"]
 _data = {
 "RESET": SubResource("Animation_cyfo2"),
+"credits": ExtResource("4_dbvv5"),
 "play_popup": SubResource("Animation_6d4e7")
 }
 
 [node name="MainMenu" type="Control"]
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +92,7 @@ theme = ExtResource("1_6b215")
 script = ExtResource("1_c3eem")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,9 +149,17 @@ text = "Join"
 
 [node name="Fullscreen" type="CheckBox" parent="Buttons/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 mouse_default_cursor_shape = 2
+button_pressed = true
 text = "Fullscreen"
+
+[node name="Credits" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Credits"
 
 [node name="Control" type="Control" parent="Buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -148,8 +185,6 @@ anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.325
-offset_left = -448.0
-offset_right = -448.0
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayContainer"]
@@ -188,7 +223,64 @@ libraries = {
 "": SubResource("AnimationLibrary_p7mpp")
 }
 
+[node name="CreditsMenu" type="AspectRatioContainer" parent="."]
+visible = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_6b215")
+ratio = 0.8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CreditsMenu"]
+layout_mode = 2
+texture = ExtResource("4_maqgi")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 33
+
+[node name="CloseCredits" type="Button" parent="CreditsMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.972222
+anchor_top = 0.0222222
+anchor_right = 1.05556
+anchor_bottom = 0.0888889
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Manual" type="RichTextLabel" parent="CreditsMenu/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "
+[b]Créditos[/b]
+
+[i] Oz Dengozos[/i]
+Kodie Freitas Sales
+Shayane Soares Cavalcante
+Ronald Leocadio Carvalho
+Maria Edarda Cavalcante
+
+[i]Músicas[/i]
+youtube.com/@ivelartore7589"
+
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="toggled" from="Buttons/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PlayContainer/MarginContainer/HBoxContainer/Singleplayer" to="." method="_on_singleplayer_pressed"]
+[connection signal="pressed" from="CreditsMenu/NinePatchRect/CloseCredits" to="." method="_on_close_credits_pressed"]

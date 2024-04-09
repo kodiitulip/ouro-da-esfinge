@@ -1,19 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj5frl83pyv60"]
+[gd_scene load_steps=8 format=3 uid="uid://bj5frl83pyv60"]
 
 [ext_resource type="Script" path="res://Scenes/Managers/escape_menu.gd" id="1_lgr6h"]
 [ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="2_lauty"]
+[ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="3_j6kxn"]
+[ext_resource type="Animation" uid="uid://bwa5p0u1wm531" path="res://Assets/Themes/credits.res" id="4_3tybe"]
+
+[sub_resource type="Animation" id="Animation_lotnx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HelpMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 384)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HelpMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_46fjs"]
+resource_name = "help"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HelpMenu:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(0, 384), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HelpMenu:visible")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d25fa"]
+_data = {
+"RESET": SubResource("Animation_lotnx"),
+"credits": ExtResource("4_3tybe"),
+"help": SubResource("Animation_46fjs")
+}
 
 [node name="EscapeMenu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_lgr6h")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-visible = false
+texture_filter = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_lauty")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
@@ -32,14 +96,36 @@ text = "Continue"
 
 [node name="Fullscreen" type="CheckBox" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../Continue")
 focus_neighbor_bottom = NodePath("../Menu")
 focus_next = NodePath("../Menu")
 focus_previous = NodePath("../Continue")
 mouse_default_cursor_shape = 2
+button_pressed = true
 text = "Fullscreen"
 alignment = 1
+
+[node name="Help" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fullscreen")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Fullscreen")
+mouse_default_cursor_shape = 2
+text = "Help"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fullscreen")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Fullscreen")
+mouse_default_cursor_shape = 2
+text = "Credits"
 
 [node name="Menu" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -61,7 +147,145 @@ focus_previous = NodePath("../Menu")
 mouse_default_cursor_shape = 2
 text = "Quit"
 
+[node name="HelpMenu" type="AspectRatioContainer" parent="."]
+visible = false
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_lauty")
+ratio = 0.8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HelpMenu"]
+layout_mode = 2
+texture = ExtResource("3_j6kxn")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 33
+
+[node name="CloseHelp" type="Button" parent="HelpMenu/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.972222
+anchor_top = 0.0222222
+anchor_right = 1.05556
+anchor_bottom = 0.0888889
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Manual" type="RichTextLabel" parent="HelpMenu/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Manual sobre Condicionamento Clássico e Operante[/b]
+
+Este guia tem como objetivo fornecer uma compreensão abrangente desses dois conceitos fundamentais na psicologia comportamental. Vamos explorar cada um deles em detalhes, desde sua definição até exemplos práticos de aplicação.
+
+[b]1. Condicionamento Clássico[/b]
+
+O condicionamento clássico é um tipo de aprendizagem associativa descoberta pelo famoso psicólogo russo Ivan Pavlov. Neste processo, um estímulo neutro é emparelhado repetidamente com um estímulo incondicionado, levando à associação entre os dois e resultando em uma resposta condicionada.
+- [b]Estímulo neutro (EN)[/b]: Inicialmente, é um estímulo que não provoca uma resposta específica.
+- [b]Estímulo incondicionado (EI)[/b]: Um estímulo que naturalmente desencadeia uma resposta sem a necessidade de aprendizagem prévia.
+- [b]Resposta incondicionada (RI)[/b]: Uma resposta automática e inata provocada pelo estímulo incondicionado.
+- [b]Estímulo condicionado (EC)[/b]: O estímulo neutro que, após o emparelhamento com o estímulo incondicionado, passa a provocar a mesma resposta que o estímulo incondicionado.
+- [b]Resposta condicionada (RC)[/b]: A resposta aprendida associada ao estímulo condicionado.
+
+[b]Exemplo Prático:[/b] Um cão que originalmente não salivava ao som de um sino (EN), após várias repetições de associar o sino com a apresentação de comida (EI), começa a salivar (RC) só de ouvir o sino.
+
+[b]2. Condicionamento Operante[/b]
+
+O condicionamento operante, proposto pelo renomado psicólogo behaviorista B.F. Skinner, envolve a associação entre um comportamento voluntário e suas consequências. Neste tipo de aprendizagem, comportamentos são moldados por reforços e punições.
+
+- [b]Reforço Positivo[/b]: Adiciona um estímulo desejável para aumentar a frequência de um comportamento.
+- [b]Reforço Negativo[/b]: Remove um estímulo aversivo para aumentar a frequência de um comportamento.
+- [b]Punição Positiva[/b]: Adiciona um estímulo aversivo para diminuir a frequência de um comportamento.
+- [b]Punição Negativa[/b]: Remove um estímulo desejável para diminuir a frequência de um comportamento.
+
+[b]Exemplo Prático:[/b] Um rato na caixa de Skinner é recompensado com comida (reforço positivo) sempre que pressiona uma alavanca, aumentando assim a probabilidade de ele pressionar a alavanca novamente.
+
+[b]Conclusão[/b]
+
+O condicionamento clássico e operante são conceitos cruciais na compreensão do comportamento humano e animal. Enquanto o condicionamento clássico se concentra na associação entre estímulos, o condicionamento operante analisa como as consequências do comportamento afetam sua frequência. Compreender esses processos pode fornecer insights valiosos para educadores, terapeutas e até mesmo designers de jogos que desejam influenciar o comportamento humano de maneira eficaz.
+"
+
+[node name="CreditsMenu" type="AspectRatioContainer" parent="."]
+visible = false
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_lauty")
+ratio = 0.8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CreditsMenu"]
+layout_mode = 2
+texture = ExtResource("3_j6kxn")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 33
+
+[node name="CloseCredits" type="Button" parent="CreditsMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.972222
+anchor_top = 0.0222222
+anchor_right = 1.05556
+anchor_bottom = 0.0888889
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Manual" type="RichTextLabel" parent="CreditsMenu/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "
+[b]Créditos[/b]
+
+[i] Oz Dengozos[/i]
+Kodie Freitas Sales
+Shayane Soares Cavalcante
+Ronald Leocadio Carvalho
+Maria Edarda Cavalcante
+
+[i]Músicas[/i]
+youtube.com/@ivelartore7589"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_d25fa")
+}
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HelpMenu/NinePatchRect/CloseHelp" to="." method="_on_close_help_pressed"]
+[connection signal="pressed" from="CreditsMenu/NinePatchRect/CloseCredits" to="." method="_on_close_credits_pressed"]

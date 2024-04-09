@@ -6,11 +6,12 @@ class_name EscapeMenu
 @onready var fullscreen: CheckBox = %Fullscreen
 @onready var menu_button: Button = %Menu
 @onready var quit_button: Button = %Quit
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var player_ui: PlayerUI
 
 var transition: Transition = TransitionManager as Transition
-var active: bool = false:
+var active: bool = true:
 	set(value):
 		active = value
 		center_container.visible = active
@@ -25,9 +26,14 @@ func fade_ui() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("escape"):
-		active = !active
-	if event.is_action_pressed("fullscreen"):
-		fullscreen.button_pressed = true
+		if $HelpMenu.visible:
+			animation_player.play_backwards("help")
+			await animation_player.animation_finished
+		elif $CreditsMenu.visible:
+			animation_player.play_backwards("credits")
+			await animation_player.animation_finished
+		else:
+			active = !active
 
 
 func _on_continue_pressed() -> void:
@@ -48,3 +54,19 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_help_pressed() -> void:
+	animation_player.play("help")
+
+
+func _on_close_help_pressed() -> void:
+	animation_player.play_backwards("help")
+
+
+func _on_credits_pressed() -> void:
+	animation_player.play("credits")
+
+
+func _on_close_credits_pressed() -> void:
+	animation_player.play_backwards("credits")

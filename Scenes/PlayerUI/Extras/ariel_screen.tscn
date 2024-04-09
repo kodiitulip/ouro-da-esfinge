@@ -1,52 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyuw8fgs6do03"]
+[gd_scene load_steps=4 format=3 uid="uid://dyuw8fgs6do03"]
 
 [ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_mcxs0"]
-[ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="2_lp88w"]
+[ext_resource type="Script" path="res://Scenes/PlayerUI/Extras/ariel_screen.gd" id="2_i82rf"]
+[ext_resource type="Texture2D" uid="uid://pcih7ni615t2" path="res://Assets/Ariel/Ativo 11-8.png" id="4_vq4bs"]
 
-[node name="Ariel\'sScreen" type="Control"]
+[node name="ArielScreen" type="Control"]
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_mcxs0")
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-anchor_left = 0.05
-anchor_top = 0.0888889
-anchor_right = 0.55
-anchor_bottom = 0.888889
-metadata/_edit_use_anchors_ = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="AspectRatioContainer"]
-layout_mode = 2
-texture = ExtResource("2_lp88w")
-patch_margin_left = 64
-patch_margin_top = 32
-patch_margin_right = 64
-patch_margin_bottom = 41
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="AspectRatioContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/MarginContainer2"]
-layout_mode = 2
-text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+script = ExtResource("2_i82rf")
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
-layout_mode = 0
-anchor_left = 0.5625
-anchor_top = 0.111111
-anchor_right = 0.95
-anchor_bottom = 0.888889
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6625
+anchor_top = 0.133333
+anchor_right = 0.9875
+anchor_bottom = 0.911111
 metadata/_edit_use_anchors_ = true
+
+[node name="Portrait" type="TextureRect" parent="AspectRatioContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("4_vq4bs")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.777778
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+ratio = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="DialogLabel" type="RichTextLabel" parent="AspectRatioContainer/MarginContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
+bbcode_enabled = true
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.95
+anchor_top = 0.888889
+anchor_right = 0.9875
+anchor_bottom = 0.966667
+mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

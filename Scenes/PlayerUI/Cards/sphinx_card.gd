@@ -12,11 +12,20 @@ var player: PlayerCharacter
 var player_pos: Vector2 = Vector2.ZERO
 var f: bool = false
 var perguntas: Dictionary
+var ui: PlayerUI
+
+@onready var audio_stream: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	_read_questions_file()
 	_generate("sphinx")
 	animation_player.play("flip")
+	AudioServer.set_bus_volume_db(1, -10)
+	audio_stream.finished.connect(_loop_song)
+
+
+func _loop_song() -> void:
+	audio_stream.play()
 
 
 func _generate(type: String = "sphinx") -> void:
@@ -52,24 +61,29 @@ func _read_questions_file() -> void:
 
 func _on_right_answer_pressed() -> void:
 	if !player:
-		get_parent().remove_child(self)
+		ui.remove_child(self)
 		queue_free()
 		return
 	player.character_data.points += 2
+	player.character_data.questions += 1
 	animation_player.play_backwards("flip")
 	await animation_player.animation_finished
 	player.fail_move(player_pos)
-	get_parent().remove_child(self)
+	ui.remove_child(self)
+	ui.ariel_screen.show_right_answer_dialog()
+	AudioServer.set_bus_volume_db(1, 0)
 	queue_free()
 
 
 func _on_wrong_answer_pressed() -> void:
 	if !player:
-		get_parent().remove_child(self)
+		ui.remove_child(self)
 		queue_free()
 		return
 	animation_player.play_backwards("flip")
 	await animation_player.animation_finished
 	player.fail_move(player_pos)
-	get_parent().remove_child(self)
+	ui.remove_child(self)
+	ui.ariel_screen.show_wrong_answer_dialog()
+	AudioServer.set_bus_volume_db(1, 0)
 	queue_free()

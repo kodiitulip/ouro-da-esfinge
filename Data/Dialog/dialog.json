@@ -1,0 +1,35 @@
+{
+	"opening-dialog": [
+		"Bem-vindos, bravos aventureiros, à Trilha da Cognição!",
+		"Me chamo Ariel e estou aqui para ajudar vocês nesta jornada através das terras antigas do conhecimento.",
+		"Aqui, em meio às relíquias de eras passadas, vocês encontrarão desafios e mistérios que testarão não apenas sua coragem, mas também sua inteligência.",
+		"Mas cuidado, meus amigos, pois a trilha está repleta de perigos e armadilhas ardilosas, assim como as esfinges lendárias que guardam os segredos mais profundos.",
+		"A cada passo, vocês enfrentarão enigmas desafiadores e decisões difíceis, onde o conhecimento é a chave para desvendar os segredos ocultos.",
+		"Pressionando o botão de [color=#9e3c2b]ajuda[/color][i](help)[/i] você pode encontrar informações que você vai precisar na nossa jornada!",
+	],
+	"wrong-answer": [
+		[
+			"Que pena aventureiro, você não conseguiu dessa vez.",
+			"Mas leve isso como uma oportunidade de [color=#9e3c2b]voltar[/color] atrás respirar e [color=#25aa10]tentar de novo[/color]!"
+		],
+		[
+			"[wave]Opss[/wave]... Resposta errada aventureiro.",
+			"Estude um pouco e tente de novo mais tarde!"
+		],
+	],
+	"right-answer": [
+		[
+			"[rainbow][wave]Yipee[/wave][/rainbow]! Você acertou aventureiro!",
+			"Aqui estão seus [color=#25aa10]pontos[/color]"
+		],
+		[
+			"Meus Parabéns, você acertou mais uma pergunta!",
+			"Mais [wave][color=#25aa10]pontos[/color][/wave] para você!"
+		],
+	],
+	"ending-dialog": [
+		"[wave]Parabéns aventureiro![/wave] Você finalizou nossa jornada e respondeu varias perguntas corretamente!",
+		"Espero que tenha gostado dessa nossa aventura. Foi ótimo aprender ao seu lado! Continue Aprendendo sempre.",
+		"Até a próxima!"
+	],
+}

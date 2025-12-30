@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d00qrskt3ya5r"]
 
 [ext_resource type="Theme" uid="uid://bh6uh8a3ed4q" path="res://Assets/Themes/main_theme.tres" id="1_6b215"]
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_c3eem"]
+[ext_resource type="Script" uid="uid://jrv8ka25db3v" path="res://Scenes/main_menu.gd" id="1_c3eem"]
 [ext_resource type="PackedScene" uid="uid://bmkbflci7m003" path="res://Scenes/main_menu_backgorund.tscn" id="3_tpq3t"]
 [ext_resource type="Animation" uid="uid://bwa5p0u1wm531" path="res://Assets/Themes/credits.res" id="4_dbvv5"]
 [ext_resource type="Texture2D" uid="uid://27e7durvhxjj" path="res://Assets/Icons/papyru.png" id="4_maqgi"]
@@ -11,34 +11,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayContainer:position")
+tracks/0/path = NodePath("CreditsMenu:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(128, 72)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CreditsMenu:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.5),
 "update": 0,
 "values": [Vector2(0, 384)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CreditsMenu:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -48,36 +36,12 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_6d4e7"]
 resource_name = "play_popup"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayContainer:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
-"transitions": PackedFloat32Array(2, 0.5),
-"update": 0,
-"values": [Vector2(-320, 72), Vector2(128, 72)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayContainer:visible")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7mpp"]
 _data = {
-"RESET": SubResource("Animation_cyfo2"),
-"credits": ExtResource("4_dbvv5"),
-"play_popup": SubResource("Animation_6d4e7")
+&"RESET": SubResource("Animation_cyfo2"),
+&"credits": ExtResource("4_dbvv5"),
+&"play_popup": SubResource("Animation_6d4e7")
 }
 
 [node name="MainMenu" type="Control"]
@@ -112,40 +76,33 @@ render_target_update_mode = 4
 [node name="MainMenuBackgorund" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_tpq3t")]
 
 [node name="Buttons" type="PanelContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.025
-anchor_top = 0.2
+anchor_top = 0.34444445
 anchor_right = 0.175
-anchor_bottom = 0.8
+anchor_bottom = 0.65555555
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Buttons"]
 layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 1
 
 [node name="Play" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Join")
-focus_next = NodePath("../Join")
 focus_previous = NodePath("../Quit")
 mouse_default_cursor_shape = 2
 text = "Play"
-
-[node name="Join" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Play")
-focus_neighbor_bottom = NodePath("../Quit")
-focus_next = NodePath("../Quit")
-focus_previous = NodePath("../Play")
-disabled = true
-text = "Join"
 
 [node name="Fullscreen" type="CheckBox" parent="Buttons/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -161,66 +118,16 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Credits"
 
-[node name="Control" type="Control" parent="Buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HSeparator" type="HSeparator" parent="Buttons/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="Quit" type="Button" parent="Buttons/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Join")
 focus_next = NodePath("../Play")
-focus_previous = NodePath("../Join")
 mouse_default_cursor_shape = 2
 text = "Quit"
-
-[node name="PlayContainer" type="PanelContainer" parent="."]
-visible = false
-clip_contents = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.7
-anchor_bottom = 0.325
-mouse_filter = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PlayContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Singleplayer" type="Button" parent="PlayContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../../../../Buttons/MarginContainer/VBoxContainer/Play")
-focus_neighbor_right = NodePath("../Multiplayer")
-focus_next = NodePath("../Multiplayer")
-focus_previous = NodePath("../Multiplayer")
-mouse_default_cursor_shape = 2
-text = "Singleplayer"
-
-[node name="Multiplayer" type="Button" parent="PlayContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Singleplayer")
-focus_neighbor_right = NodePath("../Singleplayer")
-focus_next = NodePath("../Singleplayer")
-focus_previous = NodePath("../Singleplayer")
-disabled = true
-text = "Multiplayer"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_p7mpp")
+&"": SubResource("AnimationLibrary_p7mpp")
 }
 
 [node name="CreditsMenu" type="AspectRatioContainer" parent="."]
@@ -282,5 +189,4 @@ youtube.com/@ivelartore7589"
 [connection signal="toggled" from="Buttons/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Buttons/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="PlayContainer/MarginContainer/HBoxContainer/Singleplayer" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="CreditsMenu/NinePatchRect/CloseCredits" to="." method="_on_close_credits_pressed"]

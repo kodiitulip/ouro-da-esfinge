@@ -7,10 +7,8 @@ const scenes: Dictionary = {
 }
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var progress_bar: ProgressBar = $ProgressBar
 
 var scene_container: Node
-var progress: Array[float] = []
 var scene_name: String
 var scene_load_status: int = 0
 var new_loaded_scene: Resource
@@ -39,8 +37,7 @@ func _process(_delta: float) -> void:
 	if !transitioning:
 		return
 	
-	scene_load_status = ResourceLoader.load_threaded_get_status(scene_name, progress)
-	progress_bar.value = progress[0]
+	scene_load_status = ResourceLoader.load_threaded_get_status(scene_name)
 	
 	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
 		new_loaded_scene = ResourceLoader.load_threaded_get(scene_name)

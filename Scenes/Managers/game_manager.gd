@@ -20,10 +20,10 @@ func _ready() -> void:
 	var p: Character = player_char.instantiate()
 	var p_data: CharacterData = character_data.new()
 	_setup_player(p, p_data)
-	for i in range(0, 3):
-		var c: Character = cpu_char.instantiate()
-		var c_data: CharacterData = character_data.new()
-		_setup_player(c, c_data, 'CPU')
+	#for i in range(0, 3):
+		#var c: Character = cpu_char.instantiate()
+		#var c_data: CharacterData = character_data.new()
+		#_setup_player(c, c_data, 'CPU')
 	
 	player_ui.player_datas = player_datas
 	remove_child(camera)
@@ -59,6 +59,7 @@ func _setup_player(player: Character, data: CharacterData,
 	player.global_position = starter_path_tile.global_position
 	player.rearange_in_tile(starter_path_tile.rearenge_in_tile(player))
 	player.turn_ended.connect(_pass_the_turn)
+	player.turn_ended.connect(player_ui.allow_roll)
 	players.append(player)
 	player_datas.append(data)
 

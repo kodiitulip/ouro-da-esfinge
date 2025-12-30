@@ -19,12 +19,10 @@
 	],
 	"right-answer": [
 		[
-			"[rainbow][wave]Yipee[/wave][/rainbow]! Você acertou aventureiro!",
-			"Aqui estão seus [color=#25aa10]pontos[/color]"
+			"[rainbow][wave]Yipee[/wave][/rainbow]! Você acertou aventureiro!"
 		],
 		[
-			"Meus Parabéns, você acertou mais uma pergunta!",
-			"Mais [wave][color=#25aa10]pontos[/color][/wave] para você!"
+			"Meus Parabéns, você acertou mais uma pergunta!"
 		],
 	],
 	"ending-dialog": [

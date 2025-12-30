@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cxpsy5l704tuw"]
 
 [ext_resource type="TileSet" uid="uid://dcwh58rs1h1k4" path="res://Assets/Boards/boards_tile_set.tres" id="1_xau7s"]
-[ext_resource type="Script" path="res://Scenes/Managers/game_manager.gd" id="2_fbvqw"]
+[ext_resource type="Script" uid="uid://dtyrmrujcmf2k" path="res://Scenes/Managers/game_manager.gd" id="2_fbvqw"]
 [ext_resource type="PackedScene" uid="uid://bj5frl83pyv60" path="res://Scenes/Managers/escape_menu.tscn" id="2_vstcy"]
 [ext_resource type="PackedScene" uid="uid://yi1e3grs54lg" path="res://Scenes/PlayerUI/player_ui.tscn" id="3_w7thf"]
 [ext_resource type="Texture2D" uid="uid://cl17ik4ibdyer" path="res://Assets/Boards/tile_set.png" id="6_8s2om"]
-[ext_resource type="Script" path="res://Scenes/Camera/dynamic_camera.gd" id="6_bgxqq"]
+[ext_resource type="Script" uid="uid://b6crqrgc311dd" path="res://Scenes/Camera/dynamic_camera.gd" id="6_bgxqq"]
 [ext_resource type="PackedScene" uid="uid://d4bbbygb6vqwc" path="res://Scenes/Tiles/path_tile.tscn" id="7_xd0yl"]
 [ext_resource type="PackedScene" uid="uid://1su1uq761hgu" path="res://Scenes/Tiles/end_path_tile.tscn" id="8_nmru1"]
 

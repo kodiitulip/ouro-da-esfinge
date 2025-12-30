@@ -1,0 +1,213 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number in the format `v1.2.3`"
+        required: true
+        type: string
+      build_for_windows:
+        description: "Build for Windows"
+        default: true
+        type: boolean
+      build_for_linux:
+        description: "Build for Linux"
+        default: true
+        type: boolean
+      build_for_web:
+        description: "Build for web"
+        default: true
+        type: boolean
+      build_for_android:
+        description: "Build for android"
+        default: false
+        type: boolean
+      upload_to_github:
+        description: "Upload to GitHub releases"
+        default: true
+        type: boolean
+      upload_to_itch:
+        description: "Upload to itch.io"
+        default: true
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  godot_version: 4.5.1
+  app_binary_name: sphinxs-gold
+  itch_page: "kodiitulip/sphinxs-gold"
+
+jobs:
+  foward-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: do nothing
+        run: "true"
+    outputs:
+      itch_page: ${{ env.itch_page }}
+
+  # Determine the version number for this workflow.
+  get-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine version number
+        id: tag
+        run: echo "ref=${GITHUB_REF#refs/*/}" >> "${GITHUB_OUTPUT}"
+    outputs:
+      # Use the input from workflow dispatch, or fall back to the git ref.
+      version: ${{ inputs.version || steps.tag.outputs.ref }}
+
+  # Build and package a release for each platform.
+  build:
+    needs:
+      - get-version
+    env:
+      version: ${{ needs.get-version.outputs.version }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    strategy:
+      matrix:
+        include:
+          - platform: web
+            package_ext: .zip
+            runner: ubuntu-latest
+
+          - platform: linux
+            package_ext: .zip
+            runner: ubuntu-latest
+
+          - platform: windows
+            binary_ext: .exe
+            package_ext: .zip
+            runner: ubuntu-latest
+
+          - platform: android
+            binary_ext: .apk
+            package_ext: .zip
+            runner: ubuntu-latest
+
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      # Required to create a GitHub release: <https://docs.github.com/en/rest/releases/releases#create-a-release>.
+      contents: write
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Set up environment
+        run: |
+          echo "app=tmp/app/${{env.app_binary_name}}" >> "${GITHUB_ENV}"
+          echo "package=${{env.app_binary_name}}-"'${{ matrix.platform }}${{ matrix.package_ext }}' >> "${GITHUB_ENV}"
+          echo "webfolder=${{env.app_binary_name}}-"'${{ matrix.platform }}' >> "${GITHUB_ENV}"
+
+          # Check if building for this platform is enabled.
+          echo 'is_platform_enabled=${{
+            (matrix.platform == 'web' && inputs.build_for_web) ||
+            (matrix.platform == 'linux' && inputs.build_for_linux) ||
+            (matrix.platform == 'windows' && inputs.build_for_windows) ||
+            (matrix.platform == 'android' && inputs.build_for_android)
+          }}' >> "${GITHUB_ENV}"
+
+      - name: Checkout repository
+        if: ${{ env.is_platform_enabled == 'true' }}
+        uses: actions/checkout@v4
+
+      - name: Setup android
+        if: env.is_platform_enabled == 'true' && inputs.build_for_android
+        uses: android-actions/setup-android@v3
+
+      - name: setup godot editor settings
+        if: env.is_platform_enable == 'true'
+        run: |
+          mkdir -p ~/.config/godot
+          cp ~/.github/godot/editor_settings.tres ~/.config/godot
+
+      - name: Setup Godot Project Version
+        if: ${{ env.is_platform_enabled == 'true' }}
+        run: sed -i 's/config\/version="[^"]*"/config\/version="${{ env.version }}"/' ./project.godot
+
+      - name: Setup Godot
+        if: ${{ env.is_platform_enabled == 'true' }}
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: ${{ env.godot_version }}
+          use-dotnet: false
+          include-templates: true
+
+      - name: Verify Setup, Open and Import Files
+        if: ${{ env.is_platform_enabled == 'true' }}
+        run: godot --headless --editor --quit --import ./project.
+
+      - name: Prepare output directories
+        if: ${{ env.is_platform_enabled == 'true' }}
+        run: rm -rf tmp; mkdir -p '${{ env.app }}' '${{ env.app }}/${{ env.webfolder }}'
+
+      - name: Build Project
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform != 'web' }}
+        run: godot ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
+
+      - name: Build Project (web)
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'web' }}
+        run: godot ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.webfolder }}/index.html
+
+      - name: Zip Project (web)
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'web' }}
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: ${{ env.app }}/${{ env.webfolder }}
+          dest: ${{ env.app }}/${{ env.package }}
+
+      - name: Upload package to workflow artifacts
+        if: ${{ env.is_platform_enabled == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: ${{ env.app }}/${{ env.package }}
+          name: package-${{ matrix.platform }}
+          retention-days: 1
+
+      - name: Upload package to GitHub release
+        if: ${{ env.is_platform_enabled == 'true' && inputs.upload_to_github }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.app }}/${{ env.package }}
+          asset_name: ${{ env.package }}
+          release_name: ${{ env.version }}
+          tag: ${{ env.version }}
+          overwrite: true
+
+  upload-to-itch:
+    runs-on: ubuntu-latest
+    needs:
+      - foward-env
+      - get-version
+      - build
+    if: ${{ inputs.upload_to_itch && needs.foward-env.outputs.itch_page != '' }}
+
+    steps:
+      - name: Download all packages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: package-*
+          path: tmp
+
+      - name: Setup buttler
+        uses: remarkablegames/setup-butler@v2
+        with:
+          butler-version: LATEST
+
+      - name: Upload all packages to itch.io
+        run: |
+          for channel in $(ls tmp); do
+            butler push \
+              --fix-permissions \
+              --userversion='${{ needs.get-version.outputs.version }}' \
+              tmp/"${channel}"/* \
+              '${{ env.itch_page }}':"${channel#package-}"
+          done
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}

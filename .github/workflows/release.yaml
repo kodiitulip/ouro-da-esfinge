@@ -119,11 +119,13 @@ jobs:
         if: env.is_platform_enabled == 'true' && inputs.build_for_android
         uses: android-actions/setup-android@v3
 
-      - name: setup godot editor settings
-        if: env.is_platform_enable == 'true'
+      - name: Setup keystore
+        if: env.is_platform_enabled == 'true' && inputs.build_for_android
         run: |
-          mkdir -p ~/.config/godot
-          cp ~/.github/godot/editor_settings.tres ~/.config/godot
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 -d > sphinxs-gold.keystore
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PATH=sphinxs-gold.keystore" >> "${GITHUB_ENV}"
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_USER=${{secrets.ANDROID_KEYSTORE_ALIAS}}" >> "${GITHUB_ENV}"
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=${{secrets.ANDROID_KEYSTORE_PASSWD}}" >> "${GITHUB_ENV}"
 
       - name: Setup Godot Project Version
         if: ${{ env.is_platform_enabled == 'true' }}

@@ -85,8 +85,7 @@ jobs:
             runner: ubuntu-latest
 
           - platform: android
-            binary_ext: .apk
-            package_ext: .zip
+            package_ext: .apk
             runner: ubuntu-latest
 
     runs-on: ${{ matrix.runner }}
